@@ -1,0 +1,80 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const LayoutNavbar = ({ children, onLogout }) => {
+  // Daftar menu navigasi atas
+  const navItems = [
+    { name: 'Beranda', path: '/' },
+    { name: 'Transaksi', path: '/transaksi' },
+    { name: 'Laporan', path: '/laporan' },
+    { name: 'Pengaturan', path: '/pengaturan' },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      
+      {/* Navbar Atas */}
+      <header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            
+            {/* Bagian Kiri: Logo & Nama Aplikasi */}
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">🚀</span>
+              <span className="text-xl font-bold tracking-wider">Agit Studio</span>
+            </div>
+
+            {/* Bagian Tengah: Link Navigasi (Sembunyi di layar sangat kecil, muncul di layar menengah/besar) */}
+            <nav className="hidden md:flex gap-6">
+              {navItems.map((item, index) => (
+                <Link 
+                  key={index} 
+                  to={item.path}
+                  className="font-medium hover:text-blue-200 transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Bagian Kanan: Tombol Sign Out */}
+            <div className="flex items-center">
+              <button 
+                onClick={onLogout}
+                className="flex items-center gap-2 bg-blue-700 hover:bg-red-500 px-4 py-2 rounded-lg transition-colors text-sm font-semibold shadow-sm"
+              >
+                <span>Sign Out</span>
+                <span>🚪</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+        
+        {/* Navigasi Khusus Mobile (Muncul di bawah header utama saat dibuka di HP) */}
+        <div className="md:hidden bg-blue-700 overflow-x-auto">
+          <nav className="flex gap-4 px-4 py-2 whitespace-nowrap text-sm">
+             {navItems.map((item, index) => (
+                <Link 
+                  key={index} 
+                  to={item.path}
+                  className="text-blue-100 hover:text-white font-medium"
+                >
+                  {item.name}
+                </Link>
+              ))}
+          </nav>
+        </div>
+      </header>
+
+      {/* Area Konten Utama */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {children}
+      </main>
+      
+    </div>
+  );
+};
+
+export default LayoutNavbar;
+              
