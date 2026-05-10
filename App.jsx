@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoginPage from './LoginPage';
 import HomePage from './HomePage';
 import TermsAndConditions from './TermsAndConditions';
+// Import komponen Bank Masalah
+import BankMasalah from './BankMasalah';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -33,6 +35,12 @@ function App() {
         <Route 
           path="/terms" 
           element={<TermsAndConditions />} 
+        />
+        
+        {/* RUTE BARU: Halaman Bank Masalah (Hanya bisa diakses kalau sudah login) */}
+        <Route 
+          path="/bank-masalah" 
+          element={isAuthenticated ? <BankMasalah /> : <Navigate to="/login" />} 
         />
       </Routes>
     </Router>
