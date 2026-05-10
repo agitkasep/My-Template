@@ -30,7 +30,7 @@ const HomePage = ({ onLogout }) => {
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           <span className="px-4 py-1.5 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">Fitter Kontruksi</span>
           <span className="px-4 py-1.5 bg-red-100 text-red-700 text-sm font-semibold rounded-full">YouTuber</span>
-          <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">IT Support</span> {/* Sedikit penyesuaian label agar sesuai role baru */}
+          <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">Office Boy</span> {/* Sedikit penyesuaian label agar sesuai role baru */}
         </div>
 
         {/* Informasi Detail (Satu Baris Rata Tengah) */}
