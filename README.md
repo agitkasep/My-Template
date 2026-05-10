@@ -11,5 +11,5 @@ Template dasar untuk sistem autentikasi (Login/Logout) menggunakan React Hooks. 
 1. Copy kode ke project React Anda.
 2. Pastikan Tailwind CSS sudah terpasang.
 3. Jalankan `npm start`.
-4. 
+4. Update Vercel.
 5.
