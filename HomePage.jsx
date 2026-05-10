@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Tambahkan import Link untuk navigasi
 import LayoutDashboard from './LayoutDashboard'; 
 // Memanggil foto profil
 import fotoProfil from './IMG_20260425_113801.png';
@@ -29,7 +30,7 @@ const HomePage = ({ onLogout }) => {
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           <span className="px-4 py-1.5 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">Fitter Kontruksi</span>
           <span className="px-4 py-1.5 bg-red-100 text-red-700 text-sm font-semibold rounded-full">YouTuber</span>
-          <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">Songwriter</span>
+          <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">IT Support</span> {/* Sedikit penyesuaian label agar sesuai role baru */}
         </div>
 
         {/* Informasi Detail (Satu Baris Rata Tengah) */}
@@ -66,26 +67,35 @@ const HomePage = ({ onLogout }) => {
 
         </div>
 
-        {/* Tombol Kontak (Telepon & WhatsApp) */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 w-full px-4">
+        {/* AREA TOMBOL NAVIGASI & KONTAK */}
+        <div className="flex flex-col w-full px-4 gap-4">
           
-          {/* Tombol Telepon Biasa */}
-          <a 
-            href={`tel:${noTelp}`}
-            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-lg w-full sm:w-auto"
+          {/* Tombol Utama: Trik dan Solusi IT (Akses ke Bank Masalah) */}
+          <Link 
+            to="/bank-masalah" 
+            className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-6 py-4 rounded-xl font-bold transition-all shadow-md hover:shadow-lg w-full"
           >
-            <span className="text-xl">📞</span> Hubungi Telepon
-          </a>
-          
-          {/* Tombol WhatsApp */}
-          <a 
-            href={`https://wa.me/${noWA}`}
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-lg w-full sm:w-auto"
-          >
-            <span className="text-xl">💬</span> Chat WhatsApp
-          </a>
+            <span className="text-2xl">🛠️</span> Buka Dashboard Trik & Solusi IT
+          </Link>
+
+          {/* Tombol Kontak (Telepon & WhatsApp) disejajarkan di bawahnya */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 w-full">
+            <a 
+              href={`tel:${noTelp}`}
+              className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-lg w-full sm:w-1/2"
+            >
+              <span className="text-xl">📞</span> Hubungi Telepon
+            </a>
+            
+            <a 
+              href={`https://wa.me/${noWA}`}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-lg w-full sm:w-1/2"
+            >
+              <span className="text-xl">💬</span> Chat WhatsApp
+            </a>
+          </div>
 
         </div>
 
@@ -96,4 +106,3 @@ const HomePage = ({ onLogout }) => {
 };
 
 export default HomePage;
-            
