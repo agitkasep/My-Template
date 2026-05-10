@@ -1,39 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import HomePage from './HomePage';
 import TermsAndConditions from './TermsAndConditions';
 
 function App() {
-  // State untuk melacak apakah user sudah login atau belum
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Cek apakah di database browser sudah ada status login
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem('isLoggedIn') === 'true'
+  );
 
-  // Fungsi untuk mengubah status login
-  const handleLogin = () => setIsAuthenticated(true);
-  const handleLogout = () => setIsAuthenticated(false);
+  // Fungsi Login: Set state dan simpan ke database browser
+  const handleLogin = () => {
+    localStorage.setItem('isLoggedIn', 'true');
+    setIsAuthenticated(true);
+  };
+
+  // Fungsi Logout: Hapus state dan hapus status dari database browser
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    setIsAuthenticated(false);
+  };
 
   return (
     <Router>
       <Routes>
-        {/* Halaman Login */}
         <Route 
           path="/login" 
           element={!isAuthenticated ? <LoginPage onLogin={handleLogin} /> : <Navigate to="/" />} 
         />
-        
-        {/* Halaman Utama (Hanya bisa diakses jika sudah login) */}
         <Route 
           path="/" 
           element={isAuthenticated ? <HomePage onLogout={handleLogout} /> : <Navigate to="/login" />} 
         />
-
-        {/* Halaman Syarat & Ketentuan (Bisa diakses siapa saja) */}
         <Route 
           path="/terms" 
           element={<TermsAndConditions />} 
         />
       </Routes>
     </Router>
+  );
+}
+
+export default App;
   );
 }
 
