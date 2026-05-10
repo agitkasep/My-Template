@@ -1,85 +1,92 @@
 import React from 'react';
 import LayoutDashboard from './LayoutDashboard'; 
-// Memanggil foto yang baru saja Anda upload
+// Memanggil foto profil
 import fotoProfil from './IMG_20260425_113801.png';
 
 const HomePage = ({ onLogout }) => {
+  // Nomor HP disiapkan untuk link (WA wajib pakai 62)
+  const noTelp = "088224806861";
+  const noWA = "6288224806861";
+
   return (
     <LayoutDashboard onLogout={onLogout}>
       
-      <div className="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 max-w-4xl mx-auto">
+      <div className="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 max-w-3xl mx-auto flex flex-col items-center text-center">
         
-        {/* Header Portofolio */}
-        <div className="text-center md:text-left mb-8 border-b border-gray-100 pb-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Profil Kreator</h1>
-          <p className="text-gray-500">Selamat datang di halaman portofolio digital saya.</p>
+        {/* Foto Profil */}
+        <div className="relative mb-6 mt-4">
+          <img 
+            src={fotoProfil} 
+            alt="Agit Pamungkas" 
+            className="w-48 h-48 md:w-56 md:h-56 object-cover rounded-full shadow-lg border-4 border-blue-50"
+          />
+          {/* Ornamen titik hijau online */}
+          <div className="absolute bottom-4 right-4 w-6 h-6 bg-green-500 border-4 border-white rounded-full"></div>
         </div>
 
-        {/* Konten Portofolio: Dibagi 2 kolom di layar besar */}
-        <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+        {/* Nama & Label Profesi */}
+        <h2 className="text-3xl font-bold text-gray-900 mb-3">Agit Pamungkas Pesa Ningtyas</h2>
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <span className="px-4 py-1.5 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">Fitter Kontruksi</span>
+          <span className="px-4 py-1.5 bg-red-100 text-red-700 text-sm font-semibold rounded-full">YouTuber</span>
+          <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">Songwriter</span>
+        </div>
+
+        {/* Informasi Detail (Satu Baris Rata Tengah) */}
+        <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 w-full mb-8 space-y-4 text-sm md:text-base text-gray-800 shadow-inner">
           
-          {/* Bagian Kiri: Foto */}
-          <div className="w-full md:w-1/3 flex flex-col items-center">
-            <div className="relative">
-              <img 
-                src={fotoProfil} 
-                alt="Agit Pamungkas" 
-                className="w-48 h-48 md:w-56 md:h-56 object-cover rounded-full shadow-lg border-4 border-blue-50"
-              />
-              {/* Ornamen titik hijau online */}
-              <div className="absolute bottom-4 right-4 w-5 h-5 bg-green-500 border-4 border-white rounded-full"></div>
-            </div>
-          </div>
+          <p>
+            <span className="font-semibold text-gray-500 mr-2">Tempat, Tgl Lahir:</span> 
+            Cirebon, 16 Juli 1978
+          </p>
+          
+          <p>
+            <span className="font-semibold text-gray-500 mr-2">Agama:</span> 
+            Islam
+          </p>
+          
+          <p>
+            <span className="font-semibold text-gray-500 mr-2">Email:</span>
+            <a href="mailto:agitkasep80@gmail.com" className="text-blue-600 hover:underline font-medium">
+              agitkasep80@gmail.com
+            </a>
+          </p>
+          
+          <p>
+            <span className="font-semibold text-gray-500 mr-2">YouTube:</span>
+            <a href="https://youtube.com/@agitpamungkaspesaningtyas?si=EwRc3ccVAEunzHSY" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline font-medium">
+              Agit Pamungkas Pesa Ningtyas
+            </a>
+          </p>
+          
+          <p className="leading-relaxed px-2">
+            <span className="font-semibold text-gray-500 mr-2">Alamat:</span>
+            Kampung Kalumpang, Desa Kalumpang No. 53, RT 03 / RW 01, Kec. Padarincang, Kab. Serang, Banten
+          </p>
 
-          {/* Bagian Kanan: Data Diri */}
-          <div className="w-full md:w-2/3 space-y-5">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">Agit Pamungkas Pesa Ningtyas</h2>
-              <div className="flex flex-wrap gap-2 mt-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">IT Developer</span>
-                <span className="px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">YouTuber</span>
-                <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">Songwriter</span>
-              </div>
-            </div>
+        </div>
 
-            <div className="bg-gray-50 p-5 rounded-xl border border-gray-100">
-              <dl className="grid grid-cols-1 sm:grid-cols-3 gap-y-4 gap-x-2 text-sm md:text-base">
-                
-                <dt className="font-semibold text-gray-600">Tempat, Tgl Lahir</dt>
-                <dd className="sm:col-span-2 text-gray-800 font-medium">Cirebon, 16 Juli 1978</dd>
+        {/* Tombol Kontak (Telepon & WhatsApp) */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 w-full px-4">
+          
+          {/* Tombol Telepon Biasa */}
+          <a 
+            href={`tel:${noTelp}`}
+            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-lg w-full sm:w-auto"
+          >
+            <span className="text-xl">📞</span> Hubungi Telepon
+          </a>
+          
+          {/* Tombol WhatsApp */}
+          <a 
+            href={`https://wa.me/${noWA}`}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3.5 rounded-xl font-bold transition-all shadow-md hover:shadow-lg w-full sm:w-auto"
+          >
+            <span className="text-xl">💬</span> Chat WhatsApp
+          </a>
 
-                <dt className="font-semibold text-gray-600">Agama</dt>
-                <dd className="sm:col-span-2 text-gray-800 font-medium">Islam</dd>
-
-                <dt className="font-semibold text-gray-600">Email</dt>
-                <dd className="sm:col-span-2 font-medium">
-                  <a href="mailto:agitkasep80@gmail.com" className="text-blue-600 hover:underline">
-                    agitkasep80@gmail.com
-                  </a>
-                </dd>
-
-                <dt className="font-semibold text-gray-600">YouTube</dt>
-                <dd className="sm:col-span-2 font-medium">
-                  <a 
-                    href="https://youtube.com/@agitpamungkaspesaningtyas?si=EwRc3ccVAEunzHSY" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-red-600 hover:underline flex items-center gap-1"
-                  >
-                    <span>▶️</span> Kunjungi Channel Saya
-                  </a>
-                </dd>
-
-                <dt className="font-semibold text-gray-600 mt-2">Alamat Lengkap</dt>
-                <dd className="sm:col-span-2 text-gray-800 font-medium leading-relaxed mt-2 sm:mt-0">
-                  Kampung Kalumpang, Desa Kalumpang No. 53, RT 03 / RW 01, <br />
-                  Kecamatan Padarincang, Kabupaten Serang, Banten
-                </dd>
-
-              </dl>
-            </div>
-            
-          </div>
         </div>
 
       </div>
@@ -89,3 +96,4 @@ const HomePage = ({ onLogout }) => {
 };
 
 export default HomePage;
+            
